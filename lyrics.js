@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       });
 
- // Add event listener to the edit button
+// Add event listener to the edit button
 const editButton = document.querySelector('#edit-lyrics-button');
 editButton.addEventListener('click', () => {
   // Get the selected row
@@ -67,10 +67,6 @@ editButton.addEventListener('click', () => {
     document.querySelector('#edit-music-title').value = musicTitle;
     document.querySelector('#edit-artist').value = artist;
     document.querySelector('#edit-lyrics').value = lyrics;
-  }
-});
-
-  
           // Show the edit lyric form
           document.querySelector('#edit-lyric-form').classList.remove('d-none');
         } else {
