@@ -58,7 +58,7 @@
     event.preventDefault(); // Prevent the form from submitting via the browser
     const formData = new FormData(signupForm); // Serialize form data
     formData.append('role', 'user'); // Add default user role to form data
-    fetch('http://localhost:1234/users', {
+    fetch('https://allyricsbackend-production.up.railway.app/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
