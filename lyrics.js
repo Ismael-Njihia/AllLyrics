@@ -50,12 +50,14 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
 // Add event listener to the edit button
+// Add event listener to the edit button
 const editButton = document.querySelector('#edit-lyrics-button');
 editButton.addEventListener('click', () => {
   // Get the selected row
-  const selectedRow = document.querySelector('#lyrics-table tbody input[type="checkbox"]:checked').closest('tr');
+  const selectedCheckbox = document.querySelector('#lyrics-table tbody input[type="checkbox"]:checked');
   
-  if (selectedRow) {
+  if (selectedCheckbox && selectedCheckbox.closest('tr')) {
+    const selectedRow = selectedCheckbox.closest('tr');
     const id = selectedRow.dataset.id;
     
     const musicTitle = selectedRow.querySelector('.music-title').textContent;
@@ -67,7 +69,7 @@ editButton.addEventListener('click', () => {
     document.querySelector('#edit-music-title').value = musicTitle;
     document.querySelector('#edit-artist').value = artist;
     document.querySelector('#edit-lyrics').value = lyrics;
-          // Show the edit lyric form
+
           document.querySelector('#edit-lyric-form').classList.remove('d-none');
         } else {
           alert('Please select a row to edit.');
