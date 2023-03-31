@@ -50,21 +50,26 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
  // Add event listener to the edit button
-      const editButton = document.querySelector('#edit-lyrics-button');
-      editButton.addEventListener('click', () => {
-         const selectedRow = document.querySelectorAll('#lyrics-table tbody .delete-checkbox:checked');
-        if (selectedRow) {
-          const id = selectedRow.dataset.id;
-          
-          const musicTitle = selectedRow.querySelector('.music-title').textContent;
-          const artist = selectedRow.querySelector('.artist').textContent;
-          const lyrics = selectedRow.querySelector('.lyrics').textContent;
-          
-          // Populate form with selected lyric data
-          document.querySelector('#edit-lyric-id').value = id;
-          document.querySelector('#edit-music-title').value = musicTitle;
-          document.querySelector('#edit-artist').value = artist;
-          document.querySelector('#edit-lyrics').value = lyrics;
+const editButton = document.querySelector('#edit-lyrics-button');
+editButton.addEventListener('click', () => {
+  // Get the selected row
+  const selectedRow = document.querySelector('#lyrics-table tbody input[type="checkbox"]:checked').closest('tr');
+  
+  if (selectedRow) {
+    const id = selectedRow.dataset.id;
+    
+    const musicTitle = selectedRow.querySelector('.music-title').textContent;
+    const artist = selectedRow.querySelector('.artist').textContent;
+    const lyrics = selectedRow.querySelector('.lyrics').textContent;
+    
+    // Populate form with selected lyric data
+    document.querySelector('#edit-lyric-id').value = id;
+    document.querySelector('#edit-music-title').value = musicTitle;
+    document.querySelector('#edit-artist').value = artist;
+    document.querySelector('#edit-lyrics').value = lyrics;
+  }
+});
+
   
           // Show the edit lyric form
           document.querySelector('#edit-lyric-form').classList.remove('d-none');
