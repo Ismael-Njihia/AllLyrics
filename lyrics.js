@@ -1,4 +1,4 @@
-function loadLyricsTable() {
+document.addEventListener('DOMContentLoaded', function() {
   const tableBody = document.querySelector('#lyrics-table tbody');
 
   fetch('https://allyricsbackend-production.up.railway.app/music')
@@ -20,7 +20,7 @@ function loadLyricsTable() {
         `;
          tableBody.appendChild(row);
 
-        row.addEventListener('click', () => {
+         row.addEventListener('click', () => {
           const selectedRow = document.querySelector('#lyrics-table tbody .table-primary');
           if (selectedRow) {
             selectedRow.classList.remove('table-primary');
@@ -52,9 +52,10 @@ function loadLyricsTable() {
  // Add event listener to the edit button
       const editButton = document.querySelector('#edit-lyrics-button');
       editButton.addEventListener('click', () => {
-        const selectedRow = document.querySelector('#lyrics-table tbody .table-primary');
+         const selectedRow = document.querySelectorAll('#lyrics-table tbody .delete-checkbox:checked');
         if (selectedRow) {
           const id = selectedRow.dataset.id;
+          
           const musicTitle = selectedRow.querySelector('.music-title').textContent;
           const artist = selectedRow.querySelector('.artist').textContent;
           const lyrics = selectedRow.querySelector('.lyrics').textContent;
@@ -127,4 +128,6 @@ function loadLyricsTable() {
   });
 // Load lyrics table when the page loads
     })
-}
+
+    
+});
