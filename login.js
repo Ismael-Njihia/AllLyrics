@@ -18,8 +18,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       })
       .then(data => {
-        console.log(data);
         if (data.role === 'admin') {
+           Swal.fire({
+            title: 'Success!',
+            text: 'Login successful!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          })
           window.location.href = 'admin.html'; // Redirect to admin dashboard for admin users
         } else {
           Swal.fire({
@@ -28,8 +33,10 @@ document.addEventListener('DOMContentLoaded', function () {
             icon: 'success',
             confirmButtonText: 'OK'
           }).then((result) => {
-            if (result.isConfirmed) {
+            if (result.role=='user') {
               window.location.href = 'index.html'; // Redirect to home page for non-admin users
+            }else{
+              window.location.href = 'admin.html'; // Redirect to home page for non-admin users
             }
           });
         }
