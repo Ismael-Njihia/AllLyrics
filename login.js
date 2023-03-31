@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault(); // Prevent the form from submitting via the browser
     const email = document.getElementById('email');
     const password = document.getElementById('password');
-    fetch('https://allyricsbackend-production.up.railway.app/login', {
+    fetch('https://allyricsbackend-production.up.railway.app/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
