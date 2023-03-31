@@ -126,6 +126,5 @@ function loadLyricsTable() {
     document.querySelector('#edit-lyric-form').classList.add('d-none');
   });
 // Load lyrics table when the page loads
-loadLyricsTable();
     })
 }
