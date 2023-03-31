@@ -260,7 +260,7 @@
 											setInterval(() => {
 												// randomly select 5 songs and clear the previous songs list
 												const selectedSongs = [];
-												while (selectedSongs.length < 2 && songs.length > 0) {
+												while (selectedSongs.length < 1 && songs.length > 0) {
 												const index = Math.floor(Math.random() * songs.length);
 												selectedSongs.push(songs.splice(index, 1)[0]);
 												}
