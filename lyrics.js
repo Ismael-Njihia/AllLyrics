@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
         row.dataset.id = lyric.id;
         row.innerHTML = `
           <td>${lyric.id}</td>
-          <td>${lyric.music_title}</td>
-          <td>${lyric.artist}</td>
-          <td>${lyric.lyrics}</td>
+          <td className= "music-title" >${lyric.music_title}</td>
+          <td className= "artist">${lyric.artist}</td>
+          <td className = "lyrics">${lyric.lyrics}</td>
           <td>
             <div class="form-check">
               <input type="checkbox" class="form-check-input delete-checkbox" data-id="${lyric.id}">
