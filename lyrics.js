@@ -1,9 +1,6 @@
 function loadLyricsTable() {
   const tableBody = document.querySelector('#lyrics-table tbody');
 
-  // Clear existing data in the table
-  tableBody.innerHTML = '';
-
   fetch('https://allyricsbackend-production.up.railway.app/music')
     .then(response => response.json())
     .then(data => {
