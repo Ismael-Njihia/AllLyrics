@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   const addUserForm = document.querySelector('#add-user-form');
-  const editUserBtn = document.querySelector('#edit-user-btn');
+  const editUserBtn = document.querySelector('#edit-selected-btn');
 
   addUserForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the form from submitting via the browser
