@@ -235,7 +235,10 @@
 										function addSong(song) {
 											const li = document.createElement('h4');
 											li.style.color = '#fff';
-											li.innerHTML = `<h4>${song.music_title}</h4><h5>${song.artist}</h5><pre><p>${song.lyrics}</p></pre>`;
+											li.innerHTML = `<h4>${song.music_title}</h4><h5>${song.artist}</h5><div class="lyrics">
+													${song.lyrics.replace(/\n\n/g, '<p></p>')}
+													</div>
+													`;
 											songsList.appendChild(li);
 										}
 
@@ -323,7 +326,10 @@
 											<div class="featured-item-info">
 												<h4>${song.music_title}</h4>
 												<h5>${song.artist}</h5>
-												<pre><p>${song.lyrics}</p></pre>
+												<div class="lyrics">
+												${song.lyrics.replace(/\n\n/g, '<p></p>')}
+												</div>
+
 											</div>
 										</div>
 									`;
