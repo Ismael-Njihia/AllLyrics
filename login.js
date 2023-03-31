@@ -4,7 +4,7 @@
     event.preventDefault(); // Prevent the form from submitting via the browser
     const email = document.getElementById('email')
     const password = document.getElementById('password') // Serialize form data
-    fetch('http://localhost:1234/users/${email}', {
+    fetch('https://allyricsbackend-production.up.railway.app/${email}', {
       method: 'POST',
       headers: {
         'content-Type': 'application/json',

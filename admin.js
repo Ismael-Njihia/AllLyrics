@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   addUserForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the form from submitting via the browser
     const formData = new FormData(addUserForm); // Serialize form data
-    fetch('http://localhost:12345/users', {
+    fetch('https://allyricsbackend-production.up.railway.app/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const emails = Array.from(checkedRows).map(row => row.closest('tr').querySelector('.email').textContent);
       const formData = new FormData();
       formData.append('emails', JSON.stringify(emails));
-      fetch('http://localhost:12345/users/{}',emails, {
+      fetch('https://allyricsbackend-production.up.railway.app/users/{}',emails, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
    document.addEventListener('DOMContentLoaded', function() {
-  fetch('http://localhost:12345/users')
+  fetch('https://allyricsbackend-production.up.railway.app/users')
     .then(response => {
       if (response.ok) {
         return response.json();

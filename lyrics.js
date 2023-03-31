@@ -4,7 +4,7 @@ function loadLyricsTable() {
   // Clear existing data in the table
   tableBody.innerHTML = '';
 
-  fetch('http://localhost:12345/music')
+  fetch('https://allyricsbackend-production.up.railway.app/music')
     .then(response => response.json())
     .then(data => {
       data.forEach(lyric => {
@@ -39,7 +39,7 @@ function loadLyricsTable() {
         const selectedRows = document.querySelectorAll('#lyrics-table tbody .delete-checkbox:checked');
         selectedRows.forEach(selectedRow => {
           const id = selectedRow.dataset.id;
-          fetch(`http://localhost:12345/music/${id}`, { method: 'DELETE' })
+          fetch(`https://allyricsbackend-production.up.railway.app/music/${id}`, { method: 'DELETE' })
             .then(response => {
               if (response.ok) {
                 const row = selectedRow.closest('tr');
