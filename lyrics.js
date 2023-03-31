@@ -99,7 +99,7 @@ editButton.addEventListener('click', () => {
     .then(response => {
       if (response.ok) {
         // Reload lyrics table with updated data
-        loadLyricsTable();
+        document.querySelector('#lyrics-table tbody').appendChild(row)
         // Hide the edit lyric form
         document.querySelector('#edit-lyric-form').classList.add('d-none');
         Swal.fire({
