@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const email = document.getElementById('email');
     const password = document.getElementById('password');
     fetch('https://allyricsbackend-production.up.railway.app/users', {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       },
