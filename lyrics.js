@@ -99,7 +99,27 @@ editButton.addEventListener('click', () => {
     .then(response => {
       if (response.ok) {
         // Reload lyrics table with updated data
-        document.querySelector('#lyrics-table tbody').appendChild(row)
+        fetch('https://allyricsbackend-production.up.railway.app/music')
+          .then(response => response.json())
+          .then(data => {
+            tableBody.innerHTML = '';
+            data.forEach(lyric => {
+              const row = document.createElement('tr');
+              row.dataset.id = lyric.id;
+               row.innerHTML = `
+          <td>${lyric.id}</td>
+          <td id="music-title" >${lyric.music_title}</td>
+          <td id="artist">${lyric.artist}</td>
+          <td id="lyrics">${lyric.lyrics}</td>
+          <td>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input delete-checkbox" data-id="${lyric.id}">
+            </div>
+          </td>
+        `;
+         tableBody.appendChild(row);
+            });
+          });
         // Hide the edit lyric form
         document.querySelector('#edit-lyric-form').classList.add('d-none');
         Swal.fire({
