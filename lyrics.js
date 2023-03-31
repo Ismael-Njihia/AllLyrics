@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
         row.dataset.id = lyric.id;
         row.innerHTML = `
           <td>${lyric.id}</td>
-          <td className= "music-title" >${lyric.music_title}</td>
-          <td className= "artist">${lyric.artist}</td>
-          <td className = "lyrics">${lyric.lyrics}</td>
+          <td id="music-title" >${lyric.music_title}</td>
+          <td id="artist">${lyric.artist}</td>
+          <td id="lyrics">${lyric.lyrics}</td>
           <td>
             <div class="form-check">
               <input type="checkbox" class="form-check-input delete-checkbox" data-id="${lyric.id}">
@@ -60,9 +60,9 @@ editButton.addEventListener('click', () => {
     const selectedRow = selectedCheckbox.closest('tr');
     const id = selectedRow.dataset.id;
     
-    const musicTitle = selectedRow.querySelector('.music-title').textContent;
-    const artist = selectedRow.querySelector('.artist').textContent;
-    const lyrics = selectedRow.querySelector('.lyrics').textContent;
+    const musicTitle = selectedRow.querySelector('#music-title').textContent;
+    const artist = selectedRow.querySelector('#artist').textContent;
+    const lyrics = selectedRow.querySelector('#lyrics').textContent;
     
     // Populate form with selected lyric data
     document.querySelector('#edit-lyric-id').value = id;
