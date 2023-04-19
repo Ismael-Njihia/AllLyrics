@@ -31,49 +31,7 @@
 	<body>
 		
 		<!-- modal for booking ticket form -->
-		<div class="modal fade" id="bookTicket" tabindex="-1" role="dialog" aria-labelledby="BookTicket">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">Name of The Event &nbsp; <small><span class="label label-success">Available</span> &nbsp; <span class="label label-danger">Not Available</span></small></h4>
-					</div>
-					<!-- form for events ticket booking -->
-					<form>
-						<div class="modal-body">
-							<div class="form-group">
-								<label for="exampleInputEmail1">Email</label>
-								<input type="email" class="form-control" id="exampleInputEmail1" placeholder="example@mail.com">
-							</div>
-							<div class="form-group">
-								<label for="exampleInputContact">Contact</label>
-								<input type="text" class="form-control" id="exampleInputContact" placeholder="+91 55 5555 5555">
-							</div>
-							<div class="form-group">
-								<label for="exampleInputSeats">Number of Tickets</label>
-								<select class="form-control" id="exampleInputSeats">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-								</select>
-							</div>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox"> I accept the Terms of Service
-								</label>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<!-- link to payment gatway here -->
-							<button type="button" class="btn btn-primary">Book Now</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
+		
 		
 		<!-- wrapper -->
 		<div class="wrapper" id="home">
@@ -190,94 +148,26 @@
 					<!-- hero content -->
 					<div class="hero-content ">
 						<!-- heading -->
-						<h2>Latest Uploads</h2>
+						<h2>Search For Lyrics</h2>
+						<!-- Search input field with search icon -->
+<div class="input-group">
+  <input type="text" id="search" placeholder="Search for lyrics..." class="form-control input-lg">
+  <span class="input-group-btn">
+    <button class="btn btn-primary" id="searchBtn">
+      <i class="fa fa-search"></i> <!-- Font Awesome icon for search -->
+    </button>
+  </span>
+</div>
+
+<!-- Result container to display search results -->
+<div id="searchResults"></div>
+
 						<hr>
 						<!-- paragraph -->
 						<p>We give the best <strong class="theme-color">Lyrics</strong> and now we control the world best <strong class="theme-color">Lyrics</strong>.</p>
+						
 					</div>
-					<!-- hero play list -->
-					<div class="hero-playlist">
-						<div class="row">
-							<div class="col-md-6 col-sm-6">
-								<!-- music album image -->
-								<div class="figure">
-									<!-- image -->
-									<img class="img-responsive" src="img/album/1.jpg" alt="" />
-									<!-- disk image -->
-									<img class="img-responsive disk" src="img/album/disk.png" alt="" />
-								</div>
-								<!-- album details -->
-								<div class="album-details">
-									<!-- title -->
-									<h4>Perfect Allyrics</h4>
-									<!-- composed by -->
-									<h5>By Allyrics</h5>
-									<!-- paragraph -->
-									<p>Lorem Ipsum has been the industry's standard dummy text ever since 1500.</p>
-									<!-- button -->
-									<a href="lyrics" class="btn btn-lg btn-theme" id="playNowBtn"><i class="fa fa-play"></i>&nbsp; Stream Now</a>
-								</div>
-								
-							</div>
-							<div class="card col-md-6 col-sm-6">
-								<div id="card">
-								<h1 class="h1">Songs and Lyrics</h1>
-								<h3 id="songs"></h3>
-								</div>
-
-								<!-- Add a loading message element -->
-									<div id="loading-message" class="h1">Loading songs...</div>
-
-										<script>
-										const songsList = document.getElementById('songs');
-										const loadingMessage = document.getElementById('loading-message'); // get the loading message element
-
-										// function to add a song to the list
-										function addSong(song) {
-											const li = document.createElement('h4');
-											li.style.color = '#fff';
-											li.innerHTML = `<h4>${song.music_title}</h4><h5>${song.artist}</h5><div class="lyrics">
-													${song.lyrics.replace(/\n\n/g, '<p></p>')}
-													</div>
-													`;
-											songsList.appendChild(li);
-										}
-
-										// fetch songs from backend and add to the list
-										url = 'https://allyricsbackend-production.up.railway.app/music';
-										Headers = {
-											'Content-Type': 'application/json',
-											'Accept': 'application/json',
-											'Access-Control-Allow-Origin': '*',
-											'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-										};
-
-										// Show loading message
-										loadingMessage.style.display = 'block';
-
-										fetch(url, {Headers})
-											.then(response => response.json())
-											.then(songs => {
-											setInterval(() => {
-												// randomly select 5 songs and clear the previous songs list
-												const selectedSongs = [];
-												while (selectedSongs.length < 1 && songs.length > 0) {
-												const index = Math.floor(Math.random() * songs.length);
-												selectedSongs.push(songs.splice(index, 1)[0]);
-												}
-												songsList.innerHTML = '';
-
-												// add the selected songs to the list
-												selectedSongs.forEach(song => addSong(song));
-
-												// Hide loading message
-												loadingMessage.style.display = 'none';
-											}, 20000);
-											})
-											.catch(error => console.error(error));
-										</script>
-
-							</div>
+					
 						</div>
 					</div>
 				</div>
@@ -285,19 +175,7 @@
 			<!--/ hero end -->
 			
 			<!-- promo -->
-			<div class="promo parallax-one pad">
-				<div class="container">
-					<!-- promo element -->
-					<div class="promo-element ">
-						<!-- heading -->
-						<h3>Music An Art...</h3>
-						<!-- paragraph -->
-						<p>Music is an art form and cultural activity whose medium is sound organized in time. The common elements of music are <strong>pitch</strong>, <strong>rhythm</strong>, <strong>dynamics</strong> and the sonic qualities of <strong>timbre</strong> and <strong>texture</strong>.</p>
-						<!-- link -->
-						<a class="promo-link" href="#"><i class="fa fa-play-circle"></i></a>
-					</div>
-				</div>
-			</div>
+			
 			<!--/ promo end -->
 			
 			<!-- featured abbum -->
@@ -306,10 +184,10 @@
 					<!-- default heading -->
 					<div class="default-heading">
 						<!-- heading -->
-						<h2>All Lyrics</h2>
+						<h2>A-z Lyrics</h2>
 					</div>
 					<!-- featured album elements -->
-					<div class="featured-element">
+					<div >
 						<div class="row" id="lyrics-container">
 							<!-- lyrics items will be added here -->
 							
@@ -318,27 +196,18 @@
 							<script>
 							const lyricsContainer = document.getElementById('lyrics-container');
 
-							// function to add a lyrics item to the container
-							function addLyricsItem(song) {
-									const item = document.createElement('div');
-									item.className = 'col-md-4 col-sm-6';
-									item.innerHTML = `
-										<div class="featured-item">
-											<div class="featured-item-info">
-												<h4>${song.music_title}</h4>
-												<h5>${song.artist}</h5>
-												<div class="lyrics">
-												${song.lyrics.replace(/\n\n/g, '<p></p>')}
-												</div>
+// Function to add a lyrics item to the container
+function addLyricsItem(song) {
+  const item = document.createElement('div');
+  item.innerHTML = `
+    <div class="lyrics">
+      <a href="#" class="song-link" data-id="${song.id}" data-title="${song.music_title}">${song.music_title}</a>
+    </div>
+  `;
+  lyricsContainer.appendChild(item);
+}
 
-											</div>
-										</div>
-									`;
-									lyricsContainer.appendChild(item);
-								}
-
-
-							// fetch all lyrics from backend and add to the container
+	// fetch all lyrics from backend and add to the container
 							url = 'https://allyricsbackend-production.up.railway.app/music';
 							Headers = {
 								'Content-Type': 'application/json',
@@ -347,12 +216,40 @@
 								'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
 							};
 
-							fetch(url, { Headers })
-								.then(response => response.json())
-								.then(lyrics => {
-								lyrics.forEach(lyric => addLyricsItem(lyric));
-								})
-								.catch(error => console.error(error));
+fetch(url, { Headers })
+  .then(response => response.json())
+  .then(lyrics => {
+    lyrics.forEach(lyric => addLyricsItem(lyric));
+
+    // Sort the items in A-Z order
+    const items = Array.from(lyricsContainer.children);
+    items.sort((a, b) => {
+      const titleA = a.querySelector('a').innerText.toLowerCase();
+      const titleB = b.querySelector('a').innerText.toLowerCase();
+      if (titleA < titleB) return -1;
+      if (titleA > titleB) return 1;
+      return 0;
+    });
+
+    // Append the sorted items back to the lyricsContainer
+    items.forEach(item => {
+      lyricsContainer.appendChild(item);
+    });
+
+    // Add click event listener to the song links
+    const songLinks = document.getElementsByClassName('song-link');
+    for (let i = 0; i < songLinks.length; i++) {
+      songLinks[i].addEventListener('click', (event) => {
+        event.preventDefault(); // prevent default link behavior
+        const songId = event.target.getAttribute('data-id');
+        const songTitle = event.target.getAttribute('data-title');
+        // Redirect to the page with the lyrics for the corresponding song title and ID
+        window.location.href = `/lyricsPage.html?id=${songId}&title=${songTitle}`; // replace with your actual URL structure
+      });
+    }
+  })
+  .catch(error => console.error(error));
+
 							</script>
 
 			</div>
@@ -360,59 +257,7 @@
 		
 			<!-- features end -->			
 			<!-- work with us -->
-			<div class="work-with-us pad" id="joinus">
-				<div class="container">
-					<!-- default heading -->
-					<div class="default-heading">
-						<!-- heading -->
-						<h2>Work With Us</h2>
-					</div>
-					<!-- why work with us content -->
-					<div class="why-content">
-						<!-- paragraph -->
-						<p class="why-message">It would be a great pleasure to have you in our team, follow these steps to join us.</p>
-						<div class="row">
-							<div class="col-md-3 col-sm-6">
-								<!-- why work with us item -->
-								<div class="why-item  delay-one">
-									<span class="why-number">1</span>
-									<!-- paragraph -->
-									<p>Sed ut perspi ciatis unde omnis iste natus error sit vol uptatem accus antium totam rem aperiam, eaque ipsa quae ab illo inventore veritatisnatus.</p>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6">
-								<!-- why work with us item -->
-								<div class="why-item  delay-two">
-									<span class="why-number">2</span>
-									<!-- paragraph -->
-									<p>Sed ut perspi ciatis unde omnis iste natus error sit vol uptatem accu santium totam rem aperiam, eaque ipsa quae ab illo inventore veritatisnatus.</p>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6">
-								<!-- why work with us item -->
-								<div class="why-item  delay-three">
-									<span class="why-number">3</span>
-									<!-- paragraph -->
-									<p>Sed ut perspi ciatis unde omnis iste natus error sit vol uptatem accus antium totam rem aperiam, eaque ipsa quae ab illo inventore veritatisnatus.</p>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6">
-								<!-- why work with us item -->
-								<div class="why-item  delay-four">
-									<span class="why-number">4</span>
-									<!-- paragraph -->
-									<p>Sed ut perspi ciatis unde omnis iste natus error sit vol uptatem accus antium totam rem aperiam, eaque ipsa quae ab illo inventore veritatisnatus.</p>
-								</div>
-							</div>
-						</div>
-						<!-- apply button -->
-						<div class="apply-btn">
-							<!-- button line -->
-							<a class="btn btn-lg btn-theme" href="./Signup.html">Join Now</a>
-						</div>
-					</div>
-				</div>
-			</div>
+			
 			<!--/ end work with us -->
 			
 			<!-- news letter -->
@@ -438,240 +283,7 @@
 			</div>
 			<!-- news letter end -->
 		
-			<!-- work with us end -->
 			
-			<!-- about -->
-			<div class="about" id="team">
-				<div class="container">
-					<!-- default heading -->
-					<div class="default-heading">
-						<!-- heading -->
-						<h2>Who We Are?</h2>
-					</div>
-					<!-- about what we are like content -->
-					<div class="about-what-we">
-						<div class="row">
-							<div class="col-md-4 col-sm-4">
-								<div class="what-we-item ">
-									<!-- heading with icon -->
-									<h3><i class="fa fa-heartbeat"></i> What we do?</h3>
-									<!-- paragraph -->
-									<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit occaecat cupidatat non id est laborum.</p>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-4">
-								<div class="what-we-item ">
-									<!-- heading with icon -->
-									<h3><i class="fa fa-hand-o-up"></i> Why choose us?</h3>
-									<!-- paragraph -->
-									<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit occaecat cupidatat non id est laborum.</p>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-4">
-								<div class="what-we-item ">
-									<!-- heading with icon -->
-									<h3><i class="fa fa-map-marker"></i> Where we are?</h3>
-									<!-- paragraph -->
-									<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit occaecat cupidatat non id est laborum.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- our team -->
-				<div class="team">
-					<div class="container">	
-						<!-- Team Member's Details -->
-						<div class="team-content">
-							<div class="row">
-								<div class="col-md-3 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member  delay-one">
-										<!-- Image Hover Block -->
-										<div class="member-img">
-											<!-- Image  -->
-											<img class="img-responsive" src="img/user/1.jpg" alt="" />
-											<!-- Hover block -->
-											<div class="social text-center">
-												<a href="#"><i class="fa fa-facebook"></i></a>
-												<a href="#"><i class="fa fa-google-plus"></i></a>
-												<a href="#"><i class="fa fa-linkedin"></i></a>
-												<a href="#"><i class="fa fa-twitter"></i></a>
-											</div>
-										</div>
-										<!-- Member Details -->
-										<h3>Stacey Kowalski</h3>
-										<span class="designation">Guitarist</span>
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member  delay-two">
-										<!-- Image Hover Block -->
-										<div class="member-img">
-											<!-- Image  -->
-											<img class="img-responsive" src="img/user/2.jpg" alt="" />
-											<!-- Hover block -->
-											<div class="social text-center">
-												<a href="#"><i class="fa fa-facebook"></i></a>
-												<a href="#"><i class="fa fa-google-plus"></i></a>
-												<a href="#"><i class="fa fa-linkedin"></i></a>
-												<a href="#"><i class="fa fa-twitter"></i></a>
-											</div>
-										</div>
-										<!-- Member Details -->
-										<h3>Joanna Koo</h3>
-										<span class="designation">Clarinetist</span>
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member  delay-three">
-										<!-- Image Hover Block -->
-										<div class="member-img">
-											<!-- Image  -->
-											<img class="img-responsive" src="img/user/3.jpg" alt="" />
-											<!-- Hover block -->
-											<div class="social text-center">
-												<a href="#"><i class="fa fa-facebook"></i></a>
-												<a href="#"><i class="fa fa-google-plus"></i></a>
-												<a href="#"><i class="fa fa-linkedin"></i></a>
-												<a href="#"><i class="fa fa-twitter"></i></a>
-											</div>
-										</div>
-										<!-- Member Details -->
-										<h3>Mark Laredo</h3>
-										<span class="designation">Accordionist</span>
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member  delay-four">
-										<!-- Image Hover Block -->
-										<div class="member-img">
-											<!-- Image  -->
-											<img class="img-responsive" src="img/user/4.jpg" alt="" />
-											<!-- Hover block -->
-											<div class="social text-center">
-												<a href="#"><i class="fa fa-facebook"></i></a>
-												<a href="#"><i class="fa fa-google-plus"></i></a>
-												<a href="#"><i class="fa fa-linkedin"></i></a>
-												<a href="#"><i class="fa fa-twitter"></i></a>
-											</div>
-										</div>
-										<!-- Member Details -->
-										<h3>Belie Costa</h3>
-										<span class="designation">Keyboardist</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- about end -->
-			
-			<!-- meet -->
-			<div class="meet parallax-four pad" id="meet">
-				<div class="container">
-					<!-- default heading -->
-					<div class="default-heading-shadow">
-						<h2>Upcoming Meets</h2>
-					</div>
-					<!-- meet location image -->
-					<div class="meet-map">
-						<img class="img-responsive img-map" src="img/flat/map.png" alt="" />
-						<!-- map marker for India  -->
-						<a href="#" class="map-marker india " data-toggle="tooltip" data-placement="top" title="India"><img class="img-responsive" src="img/flat/map-marker.png" alt="" /></a>
-						<!-- map marker for United States  -->
-						<a href="#" class="map-marker usa " data-toggle="tooltip" data-placement="top" title="United States"><img class="img-responsive" src="img/flat/map-marker.png" alt="" /></a>
-						<!-- map marker for South Africa  -->
-						<a href="#" class="map-marker sa " data-toggle="tooltip" data-placement="top" title="South Africa"><img class="img-responsive" src="img/flat/map-marker.png" alt="" /></a>
-						<!-- map marker for Russia  -->
-						<a href="#" class="map-marker russia " data-toggle="tooltip" data-placement="top" title="Russia"><img class="img-responsive" src="img/flat/map-marker.png" alt="" /></a>
-						<!-- map marker for Brazil  -->
-						<a href="#" class="map-marker brazil " data-toggle="tooltip" data-placement="top" title="Brazil"><img class="img-responsive" src="img/flat/map-marker.png" alt="" /></a>
-					</div>
-				</div>
-			</div>
-			<!-- meet end -->
-			
-			<!-- contact -->
-			<div class="contact pad" id="contact">
-				<div class="container">
-					<!-- default heading -->
-					<div class="default-heading">
-						<!-- heading -->
-						<h2>Contact Us</h2>
-					</div>
-					<div class="row">	
-						<div class="col-md-4 col-sm-4">
-							<!-- contact item -->
-							<div class="contact-item ">
-								<!-- big icon -->
-								<i class="fa fa-street-view"></i>
-								<!-- contact details  -->
-								<span class="contact-details"># 5th Street, Nairobi Kenya</span>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<!-- contact item -->
-							<div class="contact-item ">
-								<!-- big icon -->
-								<i class="fa fa-wifi"></i>
-								<!-- contact details  -->
-								<span class="contact-details">music.admin@allryrics.com</span>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<!-- contact item -->
-							<div class="contact-item ">
-								<!-- big icon -->
-								<i class="fa fa-phone"></i>
-								<!-- contact details  -->
-								<span class="contact-details">+254 0700 555 5555</span>
-							</div>
-						</div>
-					</div>
-					<!-- form content -->
-					<div class="form-content ">
-						<!-- paragraph -->
-						<p>Do you have any idea in your mind? Drop us a line.</p>
-						<form role="form" id="contactForm" method="post" action="https://send.pageclip.co/YK3W0127wn537CQcCSEDY4Kj4FSNxDIw" class="pageclip-form">
-							<div class="row">
-								<div class="col-md-6 col-sm-6">
-									<div class="form-group">
-										<label for="name" name="name">Name</label>
-										<input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
-									</div>
-									<div class="form-group">
-										<label for="email" name="email">Email</label>
-										<input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-									</div>
-									<div class="form-group">
-										<label for="phone" name="phone">Phone</label>
-										<input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone">
-									</div>
-								</div>
-								<div class="col-md-6 col-sm-6">
-									<div class="form-group">
-										<label for="message" name="message">Message</label>
-										<textarea class="form-control" id="message" name="message" rows="9" placeholder="Enter message"></textarea>
-									</div>
-								</div>
-							</div>
-							<div class="text-center">
-								<button type="submit" class="btn btn-lg btn-theme pageclip-form__submit">Send Message</button>
-							</div>
-						</form>
-												
-					</div>
-
-				</div>
-			</div>
-			<!-- contact end -->
-			
-			<!-- footer -->
 			<footer>
 				<div class="container">
 					<!-- social media links -->
@@ -688,6 +300,9 @@
   document.write(year);
 </script>, All rights are reserved.</p>
 				</div>
+				<li><a href="login.html">Admin</a></li>
+  <li><a href="support">Support Us</a></li>
+  <li><a href ="team">Team</a></li>
 			</footer>
 			<!-- footer end -->
 			
@@ -713,6 +328,7 @@
 		<script src="js/html5shiv.js"></script>
 		<!-- Custom JS -->
 		<script src="js/custom.js"></script>
+		<script src="search.js"></script>
 		<script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
 	</body>	
 </html>

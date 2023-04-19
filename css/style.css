@@ -338,9 +338,9 @@ hr{
 }
 
 .hero-content h2 {
-	margin-top: 0;
-	margin-bottom: 0;
-	font-size: 45px;
+	margin-top: 40px;
+	margin-bottom: 20px;
+	font-size: 35px;
 }
 
 .hero-content hr {
@@ -353,108 +353,13 @@ hr{
 	font-size: 20px;
 	line-height: 28px;
 }
-
-.hero-playlist {
-	margin-top: 50px;
-}
-
-.hero-playlist .figure {
-	position: relative;
-	max-width: 450px;
-	margin: 0 auto;
-}
-
-.hero-playlist .figure .disk {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 200px;
-	height: 200px;
-	margin-top: -100px;
-	margin-left: -100px;
-	opacity: 0.5;
-}
-
-.hero-playlist .album-details {
-	max-width: 450px;
-	margin: 0 auto;
-	margin-top: 30px;
-	margin-bottom: 30px;
-	text-align: center;
-	letter-spacing: 0.1em;
-}
-
-.hero-playlist .album-details h4 {
-	font-size: 22px;
-	line-height: 32px;
-	text-transform: uppercase;
-}
-
-.hero-playlist .album-details h5 {
-	margin-top: 15px;
-	margin-bottom: 20px;
-	font-size: 18px;
-	font-weight: 400;
-	color: #aaa;
-}
-
-.hero-playlist .album-details p {
-	margin-bottom: 30px;
-	font-size: 15px;
-	line-height: 30px;
-}
-
-.playlist-content .playlist-number {
-	margin-bottom: 10px;
-	padding: 10px 15px;
-	background: #fafafa;
-	border: 1px solid #ddd;
-}
-
-.playlist-content .playlist-number .song-info {
-	float: left;	
-}
-
-.playlist-content .playlist-number .song-info h4 {
-	margin-top: 5px;
-	margin-bottom: 5px;
-	font-size: 15px;
-}
-.playlist-content .playlist-number .song-info p {
-	font-size: 12px;
-	font-style: italic;
-}
-
-.playlist-content .playlist-number .music-icon {float: right;}
-.playlist-content .playlist-number .music-icon a {
-	display: inline-block;
-	width: 30px;
-	height: 45px;
-	line-height: 45px;
-	font-size: 20px;
-	text-align: center;
-}
-
-
-.card{
-	background-color: #242c38;
-	border-radius: 4px;
-	box-shadow: 0 1px 2px rgba(0,0,0,.05);
-	margin-bottom: 30px;
-	color: #fff;
-	margin-top: 30px;
-	padding: 20px;
-	
-
-}
-.card .h1 {
-	color: #fff;
-}
-.card ul{
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	color: #fff;
+#search{
+	  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  line-height: 18px;
+  border: 2px solid rgb(9, 49, 1);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 /* promo */
@@ -522,8 +427,44 @@ hr{
     text-align: center;
 	margin-top: 0px;
 }
+.row{
+	margin-right: -15px;
+margin-left: -15px;
+border: 3px solid blue;
+padding: 30px;
+margin-bottom: 50px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 
 
+}
+.lyrics-heading{
+	margin-top: 80px;
+	margin-bottom: 30px;
+	font-size: 20px;
+	line-height: 32px;
+	
+}
+#lyricsContainer{
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	border:2px solid blue;
+
+}
+#lyricsContainer p{
+	padding: 3px;
+	line-break: auto;
+	font-size: 18px;
+
+}
+.lyrics a{ 
+	color: #242c38;
+	font-size: 24px;
+	font-weight: 200;
+}
 /* news letter / subscribe */
 .news-letter {
 	padding: 150px 0;
